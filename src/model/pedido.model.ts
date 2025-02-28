@@ -1,5 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { productoModel } from "./producto.model";
+import { Column, Entity, OneToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { detalle_pedidoModel } from "./detalle_pedido.model";
 
 @Entity({ name: "pedidos" })
 export class pedidoModel {
@@ -10,14 +10,10 @@ export class pedidoModel {
     @Column("date")
     fecha: string;
 
-    @Column("decimal", { precision: 10, scale: 2 })
-    total: number; // Total del pedido
-
     @Column()
     cantidad_pedida: number; // Cantidad del producto en este pedido
 
-    @ManyToOne(() => productoModel)  // Relación con Producto
-    @JoinColumn({ name: 'id_producto' })  // Asegúrate de definir la relación correctamente
-    producto: productoModel;
+    @OneToMany(() => detalle_pedidoModel, detalle => detalle.id_pedido)
+    detalles: detalle_pedidoModel[];
 
 }

@@ -5,6 +5,8 @@ import "reflect-metadata"
 import productoController from "./controller/producto.controller";
 import router from "./router/producto.router";
 import routerPedido from "./router/pedido.router";
+import routerDetalle from "./router/detalle_pedido.router";
+import routerUsuario from "./router/usuario_router";
 import { createConnection } from "typeorm";
 
 dotenv.config();
@@ -36,6 +38,8 @@ class server {
     router() {
         this._app.use("/api", router);
         this._app.use("/api", routerPedido);
+        this._app.use("/api", routerDetalle);
+        this._app.use("/api", routerUsuario);
     }
 
     async listen() {

@@ -13,7 +13,4 @@ export class productoModel {
 
     @Column()
     cantidad: number;
-
-    @Column()
-    fecha_ingreso: Date;
 }

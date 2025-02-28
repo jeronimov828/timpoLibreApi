@@ -28,7 +28,6 @@ class ProductController {
             // Asignar la fecha del día de hoy a 'fecha_ingreso'
             const productoData = {
                 ...Request.body,         // Copiar todos los valores del cuerpo de la solicitud
-                fecha_ingreso: new Date() // Asignar la fecha actual
             };
 
             // Crear el producto con los datos modificados
@@ -44,7 +43,6 @@ class ProductController {
             return Response.json(new responseUtils(false, [], null, ex.message));
         }
     }
-
 
     async update(Request, Response) {
         try {
